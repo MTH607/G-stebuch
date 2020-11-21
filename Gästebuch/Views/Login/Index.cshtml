@@ -1,0 +1,42 @@
+﻿@model Gästebuch.Models.tbl_Admin
+@{ ViewBag.Title = "Admin - Gästebuch"; }
+<div class="login-div">
+    <table>
+        @using(Html.BeginForm("Authorise", "Login", FormMethod.Post))
+            {
+<tr>
+    <td>
+        <h1>Login</h1>
+    </td>
+</tr>
+                <tr>
+                    <td>@Html.LabelFor(model => model.Username)</td>
+                    <td>@Html.EditorFor(model => model.Username)</td>
+                </tr>
+                                <tr>
+                                    <td>@Html.ValidationMessageFor(model => model.Username)</td>
+                                </tr>
+
+                                                <tr>
+                                                    <td>@Html.LabelFor(model => model.Passwort)</td>
+                                                    <td>@Html.EditorFor(model => model.Passwort)</td>
+                                                </tr>
+                                                                <tr>
+                                                                    <td>@Html.ValidationMessageFor(model => model.Passwort)</td>
+                                                                </tr>
+                                                                                <tr>
+                                                                                    <td colspan="2">
+                                                                                        <label class="field-validation-error">@Html.DisplayFor(model => Model.LoginErrorMsg)</label>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td></td>
+                                                                                                    <td>
+                                                                                                        <p></p>
+                                                                                                        <input type="submit" value="Login" />
+                                                                                                        <input class="Clear" type="reset" value="Clear" />
+                                                                                                    </td>
+                                                                                                </tr>
+}
+    </table>
+</div>

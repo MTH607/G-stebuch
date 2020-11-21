@@ -1,0 +1,55 @@
+﻿@model Gästebuch.Models.tbl_Einträge
+
+@{ ViewBag.Title = "Details";
+    if(Session["rowguid"] == null)
+        {
+        Response.Redirect("~/Login/Index");
+        } }
+<br />
+<br />
+<h2>Details</h2>
+<br />
+<dt>
+    <p>@Html.DisplayNameFor(model => model.Nachname):</p>
+</dt>
+<dd>
+    <p>@Html.DisplayFor(model => model.Nachname)</p>
+</dd>
+
+<dt>
+    <p>@Html.DisplayNameFor(model => model.Vorname) </p>
+</dt>
+
+<dd>
+    <p>@Html.DisplayFor(model => model.Vorname) </p>
+</dd>
+
+<dt>
+    <p>@Html.DisplayNameFor(model => model.Bewertung)</p>
+</dt>
+
+<dd>
+    <p>@Html.DisplayFor(model => model.Bewertung)</p>
+</dd>
+
+<dt>
+    <p>@Html.DisplayNameFor(model => model.Verbesserungsvorschläge)</p>
+</dt>
+
+<dd>
+    <p>@Html.DisplayFor(model => model.Verbesserungsvorschläge)</p>
+</dd>
+
+<dt>
+    <p>@Html.DisplayNameFor(model => model.Zeitpunkt)</p>
+</dt>
+
+<dd>
+    <p>@Html.DisplayFor(model => model.Zeitpunkt)</p>
+</dd>
+<p>
+    <div class="form-actions no-color">
+        <input type="button" class="btn btn-default" value="Back to List" onclick="location.href='@Url.Action("Index", "EintragAdmin")'" />
+        @Html.ActionLink("Edit", "Edit", "EintragAdmin", new { id = Model.rowguid }, new { @class = "btn btn-default" })
+    </div>
+</p>

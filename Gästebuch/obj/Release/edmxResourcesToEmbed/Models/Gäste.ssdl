@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GästebuchModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tbl_Admin">
+    <Key>
+      <PropertyRef Name="rowguid" />
+    </Key>
+    <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Username" Type="nvarchar" MaxLength="8" Nullable="false" />
+    <Property Name="Passwort" Type="nvarchar" MaxLength="8" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_ChangeLog">
+    <Key>
+      <PropertyRef Name="LogId" />
+    </Key>
+    <Property Name="LogId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Databasename" Type="varchar" MaxLength="256" Nullable="false" />
+    <Property Name="EventType" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ObjectName" Type="varchar" MaxLength="256" Nullable="false" />
+    <Property Name="ObjectType" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="SqlCommand" Type="varchar(max)" Nullable="false" />
+    <Property Name="EventDate" Type="datetime" Nullable="false" />
+    <Property Name="LoginName" Type="varchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_Einträge">
+    <Key>
+      <PropertyRef Name="rowguid" />
+    </Key>
+    <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Nachname" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Vorname" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Bewertung" Type="nvarchar" MaxLength="1" Nullable="false" />
+    <Property Name="Verbesserungsvorschläge" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Zeitpunkt" Type="datetime" Nullable="false" />
+    <Property Name="Autorisiert" Type="bit" />
+  </EntityType>
+  <EntityContainer Name="GästebuchModelStoreContainer">
+    <EntitySet Name="tbl_Admin" EntityType="Self.tbl_Admin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_ChangeLog" EntityType="Self.tbl_ChangeLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Einträge" EntityType="Self.tbl_Einträge" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

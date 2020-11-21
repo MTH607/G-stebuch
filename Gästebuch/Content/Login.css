@@ -1,0 +1,18 @@
+﻿/* Full-width inputs */
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 10px 40px;
+    margin: 10px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/* Extra style for the cancel button (red) */
+.Clear:hover {
+    color: red;
+}
+
+.field-validation-error {
+    color: red;
+}

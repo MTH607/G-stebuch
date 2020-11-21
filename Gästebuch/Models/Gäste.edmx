@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="GästebuchModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbl_Admin">
+          <Key>
+            <PropertyRef Name="rowguid" />
+          </Key>
+          <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="8" Nullable="false" />
+          <Property Name="Passwort" Type="nvarchar" MaxLength="8" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_ChangeLog">
+          <Key>
+            <PropertyRef Name="LogId" />
+          </Key>
+          <Property Name="LogId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Databasename" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="EventType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ObjectName" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="ObjectType" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="SqlCommand" Type="varchar(max)" Nullable="false" />
+          <Property Name="EventDate" Type="datetime" Nullable="false" />
+          <Property Name="LoginName" Type="varchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_Einträge">
+          <Key>
+            <PropertyRef Name="rowguid" />
+          </Key>
+          <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Nachname" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Vorname" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Bewertung" Type="nvarchar" MaxLength="1" Nullable="false" />
+          <Property Name="Verbesserungsvorschläge" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Zeitpunkt" Type="datetime" Nullable="false" />
+          <Property Name="Autorisiert" Type="bit" />
+        </EntityType>
+        <EntityContainer Name="GästebuchModelStoreContainer">
+          <EntitySet Name="tbl_Admin" EntityType="Self.tbl_Admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_ChangeLog" EntityType="Self.tbl_ChangeLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Einträge" EntityType="Self.tbl_Einträge" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GästebuchModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbl_Admin">
+          <Key>
+            <PropertyRef Name="rowguid" />
+          </Key>
+          <Property Name="rowguid" Type="Guid" Nullable="false" />
+          <Property Name="Username" Type="String" MaxLength="8" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Passwort" Type="String" MaxLength="8" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_ChangeLog">
+          <Key>
+            <PropertyRef Name="LogId" />
+          </Key>
+          <Property Name="LogId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Databasename" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EventType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ObjectName" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ObjectType" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SqlCommand" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EventDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LoginName" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_Einträge">
+          <Key>
+            <PropertyRef Name="rowguid" />
+          </Key>
+          <Property Name="rowguid" Type="Guid" Nullable="false" />
+          <Property Name="Nachname" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Vorname" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Bewertung" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Verbesserungsvorschläge" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Zeitpunkt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Autorisiert" Type="Boolean" />
+        </EntityType>
+        <EntityContainer Name="GästebuchEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_Admin" EntityType="Self.tbl_Admin" />
+          <EntitySet Name="tbl_ChangeLog" EntityType="Self.tbl_ChangeLog" />
+          <EntitySet Name="tbl_Einträge" EntityType="Self.tbl_Einträge" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GästebuchModelStoreContainer" CdmEntityContainer="GästebuchEntities">
+          <EntitySetMapping Name="tbl_ChangeLog">
+            <EntityTypeMapping TypeName="GästebuchModel.tbl_ChangeLog">
+              <MappingFragment StoreEntitySet="tbl_ChangeLog">
+                <ScalarProperty Name="LogId" ColumnName="LogId" />
+                <ScalarProperty Name="Databasename" ColumnName="Databasename" />
+                <ScalarProperty Name="EventType" ColumnName="EventType" />
+                <ScalarProperty Name="ObjectName" ColumnName="ObjectName" />
+                <ScalarProperty Name="ObjectType" ColumnName="ObjectType" />
+                <ScalarProperty Name="SqlCommand" ColumnName="SqlCommand" />
+                <ScalarProperty Name="EventDate" ColumnName="EventDate" />
+                <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Einträge">
+            <EntityTypeMapping TypeName="GästebuchModel.tbl_Einträge">
+              <MappingFragment StoreEntitySet="tbl_Einträge">
+                <ScalarProperty Name="rowguid" ColumnName="rowguid" />
+                <ScalarProperty Name="Nachname" ColumnName="Nachname" />
+                <ScalarProperty Name="Vorname" ColumnName="Vorname" />
+                <ScalarProperty Name="Bewertung" ColumnName="Bewertung" />
+                <ScalarProperty Name="Verbesserungsvorschläge" ColumnName="Verbesserungsvorschläge" />
+                <ScalarProperty Name="Zeitpunkt" ColumnName="Zeitpunkt" />
+			                  <ScalarProperty Name="Autorisiert" ColumnName="Autorisiert" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Admin">
+            <EntityTypeMapping TypeName="IsTypeOf(GästebuchModel.tbl_Admin)">
+              <MappingFragment StoreEntitySet="tbl_Admin">
+                <ScalarProperty Name="Passwort" ColumnName="Passwort" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="rowguid" ColumnName="rowguid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

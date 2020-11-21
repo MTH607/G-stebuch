@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Gästebuch.Models.tbl_Einträge>
+
+@{ ViewBag.Title = "Gästebuch - Admin";
+    if(Session["rowguid"] == null)
+        {
+        Response.Redirect("~/Login/Index");
+        } }
+
+<br>
+<br>
+<h1>Welcome back Admin!</h1>
+<br>
+<p>
+    <input type="button" class="btn btn-default" value="Create New" onclick="location.href='@Url.Action("Create", "EintragAdmin")'" />
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nachname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Vorname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Bewertung)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Verbesserungsvorschläge)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Zeitpunkt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Autorisiert)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach(var item in Model)
+        {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Nachname)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Vorname)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Bewertung)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Verbesserungsvorschläge)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Zeitpunkt)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Autorisiert)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", "EintragAdmin", new { id = item.rowguid }, new { @class = "btn btn-default" })
+        @Html.ActionLink("Details", "Details", "EintragAdmin", new { id = item.rowguid }, new { @class = "btn btn-default" })
+        @Html.ActionLink("Delete", "Delete", "EintragAdmin", new { id = item.rowguid }, new { @class = "btn btn-default Clear" })
+    </td>
+</tr>}
+</table>

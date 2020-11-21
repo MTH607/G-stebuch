@@ -1,0 +1,76 @@
+﻿@model Gästebuch.Models.tbl_Einträge
+
+@{ ViewBag.Title = "Edit";
+    if(Session["rowguid"] == null)
+        {
+        Response.Redirect("~/Login/Index");
+        } }
+<br />
+<br />
+<h2>Edit</h2>
+<br />
+<br />
+@using(Html.BeginForm())
+    {
+@Html.AntiForgeryToken()
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.rowguid)
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Nachname, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Nachname, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Nachname, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Vorname, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Vorname, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Vorname, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Bewertung, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Bewertung, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Bewertung, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Verbesserungsvorschläge, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Verbesserungsvorschläge, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Verbesserungsvorschläge, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Zeitpunkt, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.Zeitpunkt, new { @Value = @DateTime.Now.ToLocalTime().ToString("F"), @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Zeitpunkt, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Autorisiert, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(model => model.Autorisiert, new SelectList(new[] { new SelectListItem { Value = "True", Text = "True" }, new SelectListItem { Value = "False", Text = "False", Selected = true }, }, "Value", "Text"), new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Autorisiert, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            @Html.ActionLink("Back to list", "Index", "EintragAdmin", new { id = Model.rowguid }, new { @class = "btn btn-default" })
+                            <input type="submit" value="Save" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>}
+
+@Scripts.Render("~/bundles/jqueryval")

@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Gästebuch.Models.tbl_Einträge>
+
+@{
+    ViewBag.Title = "Gästebuch - Eintrag";
+}
+
+<br>
+<br>
+<h1>Einträge</h1>
+<br>
+<p>
+    <input type="button" class="btn btn-default" value="Create New" onclick="location.href='@Url.Action("Create", "Eintrag")'" />
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nachname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Vorname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Bewertung)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Verbesserungsvorschläge)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Zeitpunkt)
+        </th>
+        <th></th>
+    </tr>
+    @foreach(var item in Model)
+        {
+        if(item.Autorisiert == true)
+            {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nachname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Vorname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Bewertung)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Verbesserungsvorschläge)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Zeitpunkt)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", "Eintrag", new { id = item.rowguid }, new { @class = "btn btn-default" })
+            </td>
+        </tr>
+            }
+        }
+</table>
+
+
+        

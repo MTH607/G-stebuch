@@ -1,0 +1,64 @@
+﻿@model Gästebuch.Models.tbl_Einträge
+
+@{
+    ViewBag.Title = "Delete";
+    if (Session["rowguid"] == null)
+    {
+        Response.Redirect("~/Login/Index");
+    }
+}
+<br />
+<br />
+<h2>Delete</h2>
+<h3>Are you sure you want to delete this?</h3>
+<dt>
+    <p>@Html.DisplayNameFor(model => model.Nachname):</p>
+</dt>
+<dd>
+    <p>@Html.DisplayFor(model => model.Nachname)</p>
+</dd>
+
+<dt>
+    <p>@Html.DisplayNameFor(model => model.Vorname) </p>
+</dt>
+
+<dd>
+    <p>@Html.DisplayFor(model => model.Vorname) </p>
+</dd>
+
+<dt>
+    <p>@Html.DisplayNameFor(model => model.Bewertung)</p>
+</dt>
+
+<dd>
+    <p>@Html.DisplayFor(model => model.Bewertung)</p>
+</dd>
+
+<dt>
+    <p>@Html.DisplayNameFor(model => model.Verbesserungsvorschläge)</p>
+</dt>
+
+<dd>
+    <p>@Html.DisplayFor(model => model.Verbesserungsvorschläge)</p>
+</dd>
+
+<dt>
+    <p>@Html.DisplayNameFor(model => model.Zeitpunkt)</p>
+</dt>
+
+<dd>
+    <p>@Html.DisplayFor(model => model.Zeitpunkt)</p>
+</dd>
+<br />
+
+@using (Html.BeginForm("Index", "EintragAdmin"))
+{
+    <button class="btn btn-default">Back to list</button>
+}
+<br />
+
+@using (Html.BeginForm())
+{
+    <input type="submit" value="Delete" class="btn btn-default" />
+    @Html.AntiForgeryToken()
+}
