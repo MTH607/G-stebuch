@@ -25,24 +25,28 @@ namespace Gästebuch.Models
         /// <summary>
         /// Gets or sets the Nachname.
         /// </summary>
+        [StringLength(20)]
         [Required(ErrorMessage = "This Field is Required")]
         public string Nachname { get; set; }
 
         /// <summary>
         /// Gets or sets the Vorname.
         /// </summary>
+        [StringLength(20)]
         [Required(ErrorMessage = "This Field is Required")]
         public string Vorname { get; set; }
 
         /// <summary>
         /// Gets or sets the Bewertung.
         /// </summary>
+        [Range(0, 5)]
         [Required(ErrorMessage = "This Field is Required")]
         public string Bewertung { get; set; }
 
         /// <summary>
         /// Gets or sets the Verbesserungsvorschläge.
         /// </summary>
+        [StringLength(255)]
         [Required(ErrorMessage = "This Field is Required")]
         public string Verbesserungsvorschläge { get; set; }
 

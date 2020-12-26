@@ -165,7 +165,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Gäste.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\Metadata.cs" />
     <Compile Include="Models\tbl_Admin.cs">
       <DependentUpon>Gäste.tt</DependentUpon>
     </Compile>

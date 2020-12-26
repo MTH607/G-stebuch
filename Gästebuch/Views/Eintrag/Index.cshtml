@@ -36,19 +36,19 @@
             {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Nachname)
+                @Html.Raw(item.Nachname)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Vorname)
+                @Html.Raw(item.Vorname)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Bewertung)
+                @Html.Raw(item.Bewertung)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Verbesserungsvorschläge)
+                @Html.Raw(item.Verbesserungsvorschläge)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Zeitpunkt)
+                @Html.Raw(item.Zeitpunkt)
             </td>
             <td>
                 @Html.ActionLink("Details", "Details", "Eintrag", new { id = item.rowguid }, new { @class = "btn btn-default" })

@@ -8,7 +8,7 @@
 //------------------------------------------------------------------------------
 
 namespace Gästebuch.Models
-    {
+{
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
 
@@ -16,7 +16,7 @@ namespace Gästebuch.Models
     /// Defines the <see cref="tbl_Admin" />.
     /// </summary>
     public partial class tbl_Admin
-        {
+    {
         /// <summary>
         /// Gets or sets the rowguid.
         /// </summary>
@@ -41,5 +41,5 @@ namespace Gästebuch.Models
         /// Gets or sets the LoginErrorMsg.
         /// </summary>
         public string LoginErrorMsg { get; set; }
-        }
     }
+}
