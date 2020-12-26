@@ -18,21 +18,6 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE TABLE tbl_ChangeLog
-(
-	LogId INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
-	Databasename VARCHAR(256) NOT NULL,
-	EventType VARCHAR(50) NOT NULL,
-	ObjectName VARCHAR(256) NOT NULL,
-	ObjectType VARCHAR(25) NOT NULL,
-	SqlCommand VARCHAR(MAX) NOT NULL,
-	EventDate DATETIME NOT NULL,
-	LoginName VARCHAR(256) NOT NULL
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
-GO
-ALTER TABLE dbo.tbl_ChangeLog ADD  CONSTRAINT DF_EventsLog_EventDate
-			DEFAULT (GETDATE()) FOR EventDate
-GO
 Create Table tbl_Einträge
 (
 	rowguid UNIQUEIDENTIFIER PRIMARY KEY default newid(),
@@ -50,7 +35,7 @@ Create Table tbl_Admin
 (
 	rowguid UNIQUEIDENTIFIER PRIMARY KEY default newid(),
 	Username NVARCHAR(8) NOT NULL,
-	Passwort NVARCHAR(8) NOT NULL
+	Passwort NVARCHAR(max) NOT NULL
 )
 GO
 INSERT INTO tbl_Admin
